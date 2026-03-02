@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    /* Project Structure */
+    "rootDir": "./src",
+    "outDir": "./dist",
+
+    /* Modern Node + ES Modules */
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "target": "ES2022",
+
+    /* Import Support */
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+
+    /* Type Safety */
+    "strict": true,
+
+    /* Node Environment */
+    "types": ["node"],
+
+    /* Build Options */
+    "sourceMap": true,
+    "skipLibCheck": true
+  },
+
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}
