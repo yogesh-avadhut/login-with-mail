@@ -8,7 +8,7 @@ export const Verification_Email_Template = `
       <style>
           body {
               font-family: Arial, sans-serif;
-              margin: 0;
+              margin: 0; 
               padding: 0;
               background-color: #f4f4f4;
           }

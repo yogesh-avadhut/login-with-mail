@@ -1,5 +1,5 @@
 import { sendVerificationCode } from "../email-service/email";
-import { createUser,verifyUser } from "../repository/user-repository";
+import { createUser,getAllUser,verifyUser } from "../repository/user-repository";
 
 
 const addUser = async(req:any,res:any)=>{
@@ -20,6 +20,24 @@ const addUser = async(req:any,res:any)=>{
         })
     }
 
+}
+
+const seeAllUsers = async function(req:any,res:any){
+    try{
+        const users = await getAllUser()
+        res.send({
+            error:false,
+            message: "data fetched successfully",
+            data: users
+        })
+    }
+    catch(err:any){
+        res.send({
+            error: true,
+            message:"user data not fetched",
+            errMessage:err.message
+        })
+    }
 }
 
 
@@ -46,4 +64,4 @@ const verifycode = async(req:any,res:any)=>{
 
 
 
-export {addUser,verifycode}
+export {addUser,verifycode,seeAllUsers}

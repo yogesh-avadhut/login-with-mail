@@ -3,7 +3,7 @@ import dotenv from "dotenv"
 
 dotenv.config()
 
-
+ 
 async function connectdb(){
       if (!process.env.URL) {
     throw new Error("MongoDB URL not found in .env");

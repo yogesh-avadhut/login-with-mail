@@ -26,24 +26,24 @@ const createUser = async (req: any) => {
 
     await user.save()
     await sendVerificationCode(user.email, verificationCode)
-
     return user
 }
 
 
 
-const verifyUser = async (req: any,res:any) => {
+const verifyUser = async (req: any, res: any) => {
 
     const { code } = req.body
-    const useravaliable = await userModel.findOne({ 
-       verificationCode: code })
+    const useravaliable = await userModel.findOne({
+        verificationCode: code
+    })
 
     if (!useravaliable) {
         throw new Error("incorrect code ...")
     }
 
     useravaliable.isVerified = true,
-    useravaliable.verificationCode = undefined
+        useravaliable.verificationCode = undefined
     await WelcomeEmail(useravaliable.email, useravaliable.userName)
     await useravaliable.save()
     res.send({
@@ -54,4 +54,22 @@ const verifyUser = async (req: any,res:any) => {
 }
 
 
-export { createUser, verifyUser }
+const getAllUser = async function () {
+    const userData = userModel.find()
+    return userData
+}
+
+const getUserById = async function (parms: any) {
+    const id = parms.id
+    const user = userModel.findById({ id })
+    return user
+}
+
+const deleteUserById = function (parms: any) {
+    const id = parms.id
+    const user = userModel.findByIdAndDelete({ id })
+    return user
+}
+
+
+export { createUser, verifyUser, getAllUser}
